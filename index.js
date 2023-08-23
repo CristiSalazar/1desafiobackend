@@ -8,24 +8,22 @@ class ProducManager {
 
     addProduct(title, description, price, thumbnail, code, stock){
         const eventoId = this.products.length +1
-        const eventoCode = this.products
-        const productoEncontrado = this.products.find((evento) => evento.id === eventoId)
-        if (productoEncontrado) {
-            console.log("Ya exite el código")
-            return
-        }
         const evento = {
             id : eventoId,
             title,
             description,
             price,
             thumbnail,
-            code : eventoCode,
             stock
         }
         this.products.push(evento)
+
+    getProductsById => {
+        this.products.find((evento) => evento.id === eventoId)
+    }
     }
 }
 
-
-ProducManager.addProduct("Producto prueba", "Este es un producto preuba", 200, "Sin imagen", "abc123", 25)
+const productos = new ProducManager()
+productos.addProduct("Producto prueba", "Este es un producto preuba", 200, "Sin imagen", "abc123", 25)
+console.log(productos)
