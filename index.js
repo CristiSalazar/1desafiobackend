@@ -1,24 +1,31 @@
 class ProducManager {
     constructor (){
-        this.eventos = []
+        this.products = []
     }
     getProducts(){
-        return this.eventos
+        return this.products
     }
 
     addProduct(title, description, price, thumbnail, code, stock){
-        const eventoId = this.eventos.length +1
+        const eventoId = this.products.length +1
+        const eventoCode = this.products
+        const productoEncontrado = this.products.find((evento) => evento.id === eventoId)
+        if (productoEncontrado) {
+            console.log("Ya exite el código")
+            return
+        }
         const evento = {
             id : eventoId,
             title,
             description,
             price,
             thumbnail,
-            code,
+            code : eventoCode,
             stock
         }
-        this.eventos.push(evento)
+        this.products.push(evento)
     }
 }
+
 
 ProducManager.addProduct("Producto prueba", "Este es un producto preuba", 200, "Sin imagen", "abc123", 25)
